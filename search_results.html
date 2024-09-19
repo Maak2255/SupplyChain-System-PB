@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: left; /* العنوان يظهر في الجانب الأيسر */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: left; /* العنوان تحت الجدول يظهر على اليسار أيضًا */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Search Results</h1>
+    </header>
+
+    <main>
+        {% if results %}
+            <h2>Results for MR No.: MAT-300/2024 or P.O. No.: SFP-03/2024</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>MR No.</th>
+                        <th>P.O. No.</th>
+                        <th>Specifications</th>
+                        <th>Estimated Value</th>
+                        <th>Vendor Name</th>
+                        <th>Actual Value</th>
+                        <th>Delivery Time</th>
+                        <th>Delivery Location</th>
+                        <th>ETA</th>
+                        <th>Payment Status</th>
+                        <th>Closed Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result.mr_no }}</td>
+                            <td>{{ result.po_no }}</td>
+                            <td>{{ result.specs }}</td>
+                            <td>{{ result.est_value }}</td>
+                            <td>{{ result.vendor_name }}</td>
+                            <td>{{ result.actual_value }}</td>
+                            <td>{{ result.delivery_time }}</td>
+                            <td>{{ result.delivery_location }}</td>
+                            <td>{{ result.eta }}</td>
+                            <td>{{ result.payment }}</td>
+                            <td>{{ result.closed }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No results found for the given MR No. or P.O. No.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Supply Chain Management System. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

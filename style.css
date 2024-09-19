@@ -1,0 +1,135 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 2px -2px gray;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: #333;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+main {
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.banner {
+  background-image: url('banner-image.jpg');
+  background-size: cover;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2em;
+}
+
+/* تصميم القائمة الجانبية (Navigation) */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: #444; /* يمكن تغيير اللون حسب رغبتك */
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px; /* زيادة التباعد بين العناصر */
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold; /* إضافة سمك الخط للروابط */
+}
+
+nav ul li a:hover {
+  text-decoration: underline; /* إضافة تأثير عند تمرير الفأرة */
+}
+
+/* تنسيق القسم الرئيسي (Main) */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px); /* استخدام min-height بدلاً من height */
+  padding: 20px;
+}
+
+/* تصميم قسم "حول" (About) */
+.about {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  font-size: 2.5em; /* زيادة حجم الخط */
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.2em;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* تصميم النموذج (Form) */
+form {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #555; /* تغيير لون الخلفية عند التمرير */
+}

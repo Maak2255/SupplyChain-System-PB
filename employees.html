@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Employee List</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('procurement') }}">Procurement</a></li>
+            <li><a href="{{ url_for('customs') }}">Customs</a></li>
+            <li><a href="{{ url_for('inventory') }}">Inventory</a></li>
+            <li><a href="{{ url_for('reports') }}">Reports</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Employee List</h2>
+        <ul>
+            {% for name in employee_names %}
+                <li><a href="{{ url_for('employee_details', employee_name=name) }}">{{ name }}</a></li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Supply Chain Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

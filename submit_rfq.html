@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit RFQ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: right;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .add-row-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .add-row-button:hover {
+            background-color: #1976D2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>نموذج تقديم RFQ</h1>
+<form action="/submit-rfq" method="POST">
+    <label for="rfq_no">RFQ No:</label>
+    <input type="text" id="rfq_no" name="rfq_no" required><br><br>
+
+    <label for="rfq_date">تاريخ RFQ:</label>
+    <input type="date" id="rfq_date" name="rfq_date" required><br><br>
+
+    <label for="list_name">اسم القائمة:</label>
+    <input type="text" id="list_name" name="list_name" required><br><br>
+
+    <h2>المواصفات الفنية</h2>
+    <table id="specification_table">
+        <thead>
+            <tr>
+                <th>رقم الصنف</th>
+                <th>المواصفات</th>
+                <th>الكمية</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="item_no[]"></td>
+                <td><input type="text" name="specification[]"></td>
+                <td><input type="number" name="quantity[]"></td>
+                <td><button type="button" class="remove-row-button">حذف</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="add-row-button" onclick="addRow()">إضافة صف</button><br><br>
+
+    <label for="payment_terms">شروط الدفع:</label>
+    <input type="text" id="payment_terms" name="payment_terms"><br><br>
+
+    <label for="offer_validity">صلاحية العرض:</label>
+    <input type="text" id="offer_validity" name="offer_validity"><br><br>
+
+    <label for="delivery_location">موقع التسليم:</label>
+    <input type="text" id="delivery_location" name="delivery_location"><br><br>
+
+    <label for="other_terms">شروط أخرى:</label>
+    <textarea id="other_terms" name="other_terms" rows="4"></textarea><br><br>
+
+    <input type="submit" value="إرسال RFQ">
+</form>
+
+<script>
+    function addRow() {
+        var table = document.getElementById("specification_table").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow();
+        newRow.innerHTML = `
+            <td><input type="text" name="item_no[]"></td>
+            <td><input type="text" name="specification[]"></td>
+            <td><input type="number" name="quantity[]"></td>
+            <td><button type="button" class="remove-row-button" onclick="removeRow(this)">حذف</button></td>
+        `;
+    }
+
+    function removeRow(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+</script>
+
+</body>
+</html>

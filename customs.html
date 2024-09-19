@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"> 
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customs Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav ul {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #343a40;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #007bff;
+        }
+
+        .page-header {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .page-header h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Customs Management</h1>
+    </header>
+
+    <nav>
+        <ul class="text-center">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('procurement') }}">Procurement</a></li>
+            <li><a href="{{ url_for('customs') }}">Customs</a></li>
+            <li><a href="{{ url_for('inventory') }}">Inventory </a></li>
+            <li><a href="{{ url_for('customs_reports') }}">Customs Reports</a></li> <!-- رابط صفحة التقارير -->
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>Customs Details Form</h1>
+    </div>
+
+    <main>
+        <form action="{{ url_for('submit_customs') }}" method="POST">
+            <div class="form-group">
+                <label for="customs_declaration_number">Customs Declaration Number:</label>
+                <input type="text" id="customs_declaration_number" name="customs_declaration_number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="purchase_order_number">Purchase Order or Contract Number:</label>
+                <input type="text" id="purchase_order_number" name="purchase_order_number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required step="0.01">
+            </div>
+
+            <div class="form-group">
+                <label for="vendor_name">Vendor Name:</label>
+                <input type="text" id="vendor_name" name="vendor_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="shipping_method">Shipping Method:</label>
+                <select id="shipping_method" name="shipping_method" required>
+                    <option value="airplane">Airplane</option>
+                    <option value="ship">Ship</option>
+                    <option value="free_zone">Free Zone</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bill_of_lading_number">Bill of Lading Number:</label>
+                <input type="text" id="bill_of_lading_number" name="bill_of_lading_number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="full_specification">Full Specification:</label>
+                <textarea id="full_specification" name="full_specification" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="quantities">Quantities:</label>
+                <input type="number" id="quantities" name="quantities" required>
+            </div>
+
+            <div class="form-group">
+                <label for="accounted_for_whom">Accounted for Whom:</label>
+                <select id="accounted_for_whom" name="accounted_for_whom" required>
+                    <option value="our_company">Our Company</option>
+                    <option value="contractor">Contractor</option>
+                </select>
+            </div>
+
+            <input type="submit" value="Submit Customs Information">
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Supply Chain Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.11/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

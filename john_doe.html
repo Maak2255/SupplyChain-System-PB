@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee - John Doe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        form input, form select, form button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Employee - John Doe</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('procurement') }}">Procurement</a></li>
+            <li><a href="{{ url_for('customs') }}">Customs</a></li>
+            <li><a href="{{ url_for('inventory') }}">Inventory</a></li>
+            <li><a href="{{ url_for('reports') }}">Reports</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Enter Data</h2>
+        <form id="dataForm">
+            <label for="mr_no">MR No.:</label>
+            <input type="text" id="mr_no" name="mr_no" required>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+            <label for="est_value">Est. Value:</label>
+            <input type="number" id="est_value" name="est_value" required>
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+
+        <h2>Submitted Data</h2>
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>MR No.</th>
+                    <th>Description</th>
+                    <th>Est. Value</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Supply Chain Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var mr_no = document.getElementById('mr_no').value;
+            var description = document.getElementById('description').value;
+            var est_value = document.getElementById('est_value').value;
+            var status = document.getElementById('status').value;
+
+            // Submit data to server (Supabase) or local storage
+            // Here, we'll just add it to the table for demonstration purposes
+
+            var table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow();
+
+            newRow.insertCell(0).textContent = mr_no;
+            newRow.insertCell(1).textContent = description;
+            newRow.insertCell(2).textContent = est_value;
+            newRow.insertCell(3).textContent = status;
+
+            // Optionally clear form fields
+            document.getElementById('dataForm').reset();
+        });
+    </script>
+</body>
+</html>

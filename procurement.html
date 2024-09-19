@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurement Department</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .procurement-details {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .procurement-details h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .procurement-details p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .actions .action {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+        }
+
+        .actions .action img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .employees-section {
+            margin-top: 40px;
+        }
+
+        .employees-section h3 {
+            color: #007bff;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .employees-section ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 0;
+            list-style: none;
+            justify-items: center;
+        }
+
+        .employees-section ul li {
+            background-color: #007bff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .employees-section ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .employees-section ul li:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Procurement Department</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('procurement') }}">Procurement</a></li>
+            <li><a href="{{ url_for('customs') }}">Customs</a></li>
+            <li><a href="{{ url_for('inventory') }}">Inventory</a></li>
+            <li><a href="{{ url_for('reports') }}">Reports</a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('mr_details') }}">MR Details</a></li>
+            <li><a href="{{ url_for('rfq') }}">RFQ</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="procurement-details">
+            <h2>Manage Your Procurement Processes</h2>
+            <p>Here you can manage all your procurement-related activities, including MR details, RFQs, and searching through existing records.</p>
+        </section>
+
+        <section class="actions">
+            <div class="action">
+                <img src="https://via.placeholder.com/300x200" alt="MR Details">
+                <h3>MR Details</h3>
+                <p>Manage your Material Requisitions and keep track of all the details.</p>
+                <a href="{{ url_for('mr_details') }}">Go to MR Details</a>
+            </div>
+
+            <div class="action">
+                <img src="https://via.placeholder.com/300x200" alt="RFQ">
+                <h3>Request for Quotation (RFQ)</h3>
+                <p>Create and manage RFQs for your suppliers with ease.</p>
+                <a href="{{ url_for('rfq') }}">Go to RFQ</a>
+            </div>
+
+            <div class="action">
+                <img src="https://via.placeholder.com/300x200" alt="Search">
+                <h3>Search Records</h3>
+                <p>Search through your procurement records to find what you need.</p>
+                <a href="{{ url_for('search') }}">Search Now</a>
+            </div>
+        </section>
+
+        <section class="employees-section">
+            <h3>Employees</h3>
+            <ul>
+                <li><a href="{{ url_for('employee_details', employee_name='Ramy_Elderany') }}">Ramy Elderany</a></li>
+                <li><a href="{{ url_for('employee_details', employee_name='Mohamed_soror') }}">Mohamed Soror</a></li>
+                <li><a href="{{ url_for('employee_details', employee_name='Nabil_Ellithy') }}">Nabil Ellithy</a></li>
+                <li><a href="{{ url_for('employee_details', employee_name='Aly_Gamal') }}">Aly Gamal</a></li>
+                <li><a href="{{ url_for('employee_details', employee_name='Islam_Mohamed') }}">Islam Mohamed</a></li>
+                <li><a href="{{ url_for('employee_details', employee_name='A_Abdel_Kawy') }}">A Abdel Kawy</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Supply Chain Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

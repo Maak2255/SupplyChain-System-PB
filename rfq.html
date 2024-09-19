@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFQ - Request for Quotation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        .page-header {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .page-header h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="date"],
+        form input[type="number"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        form table th,
+        form table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        form table th {
+            background-color: #f2f2f2;
+        }
+
+        form input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Request for Quotation (RFQ)</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('procurement') }}">Procurement Department</a></li>
+            <li><a href="{{ url_for('customs') }}">Customs Department</a></li>
+            <li><a href="{{ url_for('inventory') }}">Inventory Department</a></li>
+            <li><a href="{{ url_for('reports') }}">Reports Department</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>RFQ Details Form</h1>
+    </div>
+
+    <main>
+        <form action="/submit-rfq" method="POST">
+            <label for="rfq_no">RFQ No:</label>
+            <input type="text" id="rfq_no" name="rfq_no" required>
+
+            <label for="rfq_date">Date:</label>
+            <input type="date" id="rfq_date" name="rfq_date" required>
+
+            <h2>Technical Specifications</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item No.</th>
+                        <th>Specification</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="specification_table">
+                    <!-- زيادة عدد الصفوف إلى 10 -->
+                    <tr>
+                        <td><input type="text" name="item_no[]"></td>
+                        <td><input type="text" name="specification[]"></td>
+                        <td><input type="number" name="quantity[]"></td>
+                    </tr>
+                    <!-- إضافة المزيد من الصفوف حسب الحاجة -->
+                </tbody>
+            </table>
+
+            <h2>Additional Conditions</h2>
+            <label for="payment_terms">Payment Terms:</label>
+            <input type="text" id="payment_terms" name="payment_terms">
+
+            <label for="offer_validity">Offer Validity:</label>
+            <input type="text" id="offer_validity" name="offer_validity">
+
+            <label for="delivery_location">Delivery Location:</label>
+            <input type="text" id="delivery_location" name="delivery_location">
+
+            <label for="other_terms">Other Terms:</label>
+            <textarea id="other_terms" name="other_terms" rows="4"></textarea>
+
+            <label for="list_name">List Name:</label>
+            <input type="text" id="list_name" name="list_name" required>
+
+            <input type="submit" value="Send RFQ">
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Supply Chain Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

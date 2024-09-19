@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details of {{ employee_data['name'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Employee: {{ employee_data['name'] }}</h1>
+    </header>
+
+    <main>
+        <h2>Details</h2>
+        <p><strong>MR No:</strong> {{ employee_data['mr_no'] }}</p>
+        <p><strong>Description:</strong> {{ employee_data['description'] }}</p>
+        <p><strong>Estimated Value:</strong> {{ employee_data['est_value'] }}</p>
+        <p><strong>Status:</strong> {{ employee_data['status'] }}</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Supply Chain Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

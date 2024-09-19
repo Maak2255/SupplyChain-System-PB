@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MR Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #343a40;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #495057;
+        }
+
+        .mr-details {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+            margin-top: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group textarea {
+            height: 100px;
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        /* تكبير حقل status */
+        .form-group #closed {
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Procurement Management</h1>
+    </header>
+
+    <nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('procurement') }}">Procurement</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('customs') }}">Customs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('inventory') }}">Inventory</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('reports') }}">Reports</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="mr-details">
+            <h2>MR Details Form</h2>
+            <form action="{{ url_for('submit_mr_details') }}" method="POST">
+                <div class="form-group">
+                    <label for="mr_no">MR No.: </label>
+                    <input type="text" class="form-control" id="mr_no" name="mr_no" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="po_no">P.O. No.: </label>
+                    <input type="text" class="form-control" id="po_no" name="po_no" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cd_no">CD No.: </label>
+                    <input type="text" class="form-control" id="cd_no" name="cd_no">
+                </div>
+
+                <div class="form-group">
+                    <label for="specs">Specs: </label>
+                    <input type="text" class="form-control" id="specs" name="specs">
+                </div>
+
+                <div class="form-group">
+                    <label for="est_value">Est. Value: </label>
+                    <input type="number" class="form-control" id="est_value" name="est_value">
+                </div>
+
+                <div class="form-group">
+                    <label for="vendor_name">Vendor Name: </label>
+                    <input type="text" class="form-control" id="vendor_name" name="vendor_name">
+                </div>
+
+                <div class="form-group">
+                    <label for="actual_value">Actual Value: </label>
+                    <input type="number" class="form-control" id="actual_value" name="actual_value">
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery_time">Delivery Time: </label>
+                    <input type="text" class="form-control" id="delivery_time" name="delivery_time">
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery_location">Delivery Location: </label>
+                    <input type="text" class="form-control" id="delivery_location" name="delivery_location">
+                </div>
+
+                <div class="form-group">
+                    <label for="eta">ETA: </label>
+                    <input type="text" class="form-control" id="eta" name="eta">
+                </div>
+
+                <div class="form-group">
+                    <label for="payment">Payment: </label>
+                    <input type="text" class="form-control" id="payment" name="payment">
+                </div>
+
+                <div class="form-group">
+                    <label for="closed">Closed: </label>
+                    <select id="closed" name="closed" class="form-control">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-submit btn-block">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Supply Chain Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

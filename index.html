@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Supply Chain Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .about {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .about h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .about p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .services .service {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+        }
+
+        .services .service img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Supply Chain Management System PB</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('procurement') }}">Procurement</a></li>
+            <li><a href="{{ url_for('customs') }}">Customs</a></li>
+            <li><a href="{{ url_for('inventory') }}">Inventory</a></li>
+            <li><a href="{{ url_for('reports') }}">Reports</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="about">
+            <h2>About Our Company</h2>
+            <p>PetroBaker Petroleum Company , The company is structured into several departments, including the Materials Department. This department is responsible for procurement, customs, inventory management, and all related operations.</p>
+        </section>
+
+        <section class="services">
+            <div class="service">
+                <img src="{{ url_for('static', filename='A_high-quality_image_representing_supply_chain_pro.png') }}" alt="Procurement Image">
+                <h3>Procurement Department</h3>
+                <p>Optimize procurement processes to improve efficiency and reduce costs.</p>
+            </div>
+            <div class="service">
+                <img src="{{ url_for('static', filename='A_high-quality_image_showing_customs_operations_in.png') }}" alt="Customs Image">
+                <h3>Customs Department</h3>
+                <p>Ensure smooth customs processes and compliance with regulations.</p>
+            </div>
+            <div class="service">
+                <img src="https://via.placeholder.com/300x200" alt="Inventory Image">
+                <h3>Inventory Department</h3>
+                <p>Streamline inventory operations for optimal stock levels and flow.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Supply Chain Management System PB. Dr. Mohamed Hammam All rights reserved.</p>
+    </footer>
+</body>
+</html>
