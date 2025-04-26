@@ -6,6 +6,16 @@ from supabase import create_client, Client
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+
+SUPABASE_URL = os.environ.get('SUPABASE_URL') 
+SUPABASE_API_KEY = os.environ.get('SUPABASE_API_KEY') 
+EMAIL_USER = os.environ.get('SMTP_USER')  # المستخدم المخزن في secrets
+EMAIL_PASS = os.environ.get('SMTP_PASSWORD')  # كلمة المرور المخزنة في secrets
+EMAIL_HOST = 'smtp-mail.outlook.com'  # خادم SMTP الخاص بـ Hotmail/Outlook
+EMAIL_PORT = 587  # المنفذ المستخدم
+
+# إعدادات الاتصال بـ Supabase
+
 # استدعاء القيم من الـ Secrets
 app = Flask(__name__)
 
